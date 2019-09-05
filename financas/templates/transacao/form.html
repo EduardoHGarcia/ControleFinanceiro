@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Controle Financeiro</title>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}<!--Evita varios ataques de alteração de informações enviadas pelo form-->
+
+        {{ form.as_p }}
+
+        <button type="submit">Salvar</button>
+        <button type="button" onclick="location.href='{% url 'home_transacao' %}'">Cancelar</button>
+    </form>
+</body>
+</html>

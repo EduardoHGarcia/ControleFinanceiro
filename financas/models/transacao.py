@@ -12,7 +12,7 @@ class Transacao(models.Model):
     forma_pagamento = models.ForeignKey(Forma_Pagamento, on_delete=models.DO_NOTHING)
     tipo_transacao = models.ForeignKey(Tipo_Transacao, on_delete=models.DO_NOTHING)
     conta = models.ForeignKey(Conta, on_delete=models.DO_NOTHING)
-    is_deletado = models.BooleanField(auto_created=False)
+    is_deletado = models.BooleanField(auto_created=False, default=False)
     class Meta:
         verbose_name_plural = "Transações"
     def __str__(self):

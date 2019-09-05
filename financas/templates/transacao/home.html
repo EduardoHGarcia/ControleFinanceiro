@@ -5,15 +5,17 @@
     <title>Sistema de Controle Financeiro</title>
 </head>
 <body>
+    <button type="button" onclick="location.href='{% url 'cadastro_transacao' %}'">Cadastrar Transação</button>
     <!--Esse tipo de template do jungle é feito pelo JINJA, lembrar para ver como faz all-->
     <table>
         <th>
             <td>Nome</td>
-            <td>valor</td>
-            <td>data</td>
-            <td>categoria</td>
-            <td>forma pagamento</td>
-            <td>tipo transacao</td>
+            <td>Valor</td>
+            <td>Data</td>
+            <td>Categoria</td>
+            <td>Forma Pagamento</td>
+            <td>Tipo Transação</td>
+            <td>Ações</td>
         </th>
     {% for transacao in transacoes %}
         <tr>
@@ -24,6 +26,10 @@
             <td>{{transacao.forma_pagamento}}</td>
             <td>{{transacao.tipo_transacao}}</td>
             <td>{{transacao}}</td>
+            <td>
+                <a href="{% url 'alterar_transacao' transacao.id %}">Alterar</a>
+                <a href="{% url 'excluir_transacao' transacao.id %}">Excluir</a>
+            </td>
         </tr>
     {% endfor %}
     </table>
