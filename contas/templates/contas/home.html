@@ -2,9 +2,30 @@
 <html lang="pt/br">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Sistema de Controle Financeiro</title>
 </head>
 <body>
-
+    <!--Esse tipo de template do jungle é feito pelo JINJA, lembrar para ver como faz all-->
+    <table>
+        <th>
+            <td>Nome</td>
+            <td>valor</td>
+            <td>data</td>
+            <td>categoria</td>
+            <td>forma pagamento</td>
+            <td>tipo transacao</td>
+        </th>
+    {% for transacao in transacoes %}
+        <tr>
+            <td>{{transacao}}</td>
+            <td>{{transacao.valor}}</td>
+            <td>{{transacao.dt_transacao}}</td>
+            <td>{{transacao.categoria}}</td>
+            <td>{{transacao.forma_pagamento}}</td>
+            <td>{{transacao.tipo_transacao}}</td>
+            <td>{{transacao}}</td>
+        </tr>
+    {% endfor %}
+    </table>
 </body>
 </html>
