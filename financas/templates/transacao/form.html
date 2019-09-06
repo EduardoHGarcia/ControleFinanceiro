@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block content %}
-<form method="POST">
-    {% csrf_token %}<!--Evita varios ataques de alteração de informações enviadas pelo form-->
-
-    {{ form.as_p }}
-
-    <button type="submit" class="btn btn-success">Salvar</button>
-    <button type="button" class="btn btn-danger" onclick="location.href='{% url 'home_transacao' %}'">Cancelar</button>
-</form>
+<div class="card">
+    <div class="card-header">Cadastro de Transação</div>
+    <div class="card-body">
+        <form method="POST">
+        {% csrf_token %}<!--Evita varios ataques de alteração de informações enviadas pelo form-->
+        {{ form.as_p }}
+        <button type="button" class="btn btn-danger float-right col-lg-2 col-sm-2 col-md-2" onclick="location.href='{% url 'home_transacao' %}'">Cancelar</button>
+        <button type="submit" class="btn btn-success float-right mr-4 col-lg-2 col-sm-2 col-md-2">Salvar</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

@@ -13,7 +13,7 @@ def nova_transacao(request):
     form = TransacaoForm(request.POST or None)
 
     if form.is_valid():
-        form.save()
+        Transacao.objects.create(**form.cleaned_data);
         return redirect('home_transacao')
 
     return render(request, 'transacao/form.html', {'form': form})
@@ -23,7 +23,7 @@ def alterar_transacao(request, pk):
     form = TransacaoForm(request.POST or None, instance = transacao)
 
     if form.is_valid():
-        form.save()
+        Transacao.objects.create(**form.cleaned_data);
         return redirect('home_transacao')
 
     return render(request, 'transacao/form.html', {'form': form})
