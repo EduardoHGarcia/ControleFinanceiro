@@ -1,72 +1,47 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html lang="pt/br">
-    <head>
-        <meta charset="UTF-8">
-        <title>Sistema de Controle Financeiro</title>
-        <link rel="stylesheet" href="{% static 'financas/css/bootstrap.min.css' %}">
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-          <a class="navbar-brand" href="{% url 'home_transacao' %}">Controle Financeiro</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a class="nav-link" href="{% url 'home_transacao' %}">Home<span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'home_transacao' %}">Tem nada aqui, só está aqui para ficar de exemplo</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <main class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <button type="button" class="btn btn-success float-right col-lg-2" onclick="location.href='{% url 'cadastro_transacao' %}'">Cadastrar Transação</button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-            <!--Esse tipo de template do jungle é feito pelo JINJA, lembrar para ver como faz all-->
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Valor</th>
-                                <th scope="col">Data</th>
-                                <th scope="col">Categoria</th>
-                                <th scope="col">Forma Pagamento</th>
-                                <th scope="col">Tipo Transação</th>
-                                <th scope="col">Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for transacao in transacoes %}
-                                {% if transacao.tipo_transacao.id == 1 %}
-                                    <tr class="bg-danger">
-                                {% else %}
-                                    <tr class="bg-success">
-                                {% endif %}
-                                    <td>{{transacao}}</td>
-                                    <td>{{transacao.valor}}</td>
-                                    <td>{{transacao.dt_transacao}}</td>
-                                    <td>{{transacao.categoria}}</td>
-                                    <td>{{transacao.forma_pagamento}}</td>
-                                    <td>{{transacao.tipo_transacao}}</td>
-                                    <td>
-                                        <a href="{% url 'alterar_transacao' transacao.id %}">Alterar</a>
-                                        <a href="{% url 'excluir_transacao' transacao.id %}">Excluir</a>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </main>
-    </body>
-</html>
+{% block content %}
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <button type="button" class="btn btn-success float-right col-lg-2" onclick="location.href='{% url 'cadastro_transacao' %}'">Cadastrar Transação</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+<!--Esse tipo de template do jungle é feito pelo JINJA, lembrar para ver como faz all-->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Forma Pagamento</th>
+                    <th scope="col">Tipo Transação</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transacao in transacoes %}
+                    {% if transacao.tipo_transacao.id == 1 %}
+                        <tr class="bg-danger">
+                    {% else %}
+                        <tr class="bg-success">
+                    {% endif %}
+                        <td>{{transacao}}</td>
+                        <td>{{transacao.valor}}</td>
+                        <td>{{transacao.dt_transacao}}</td>
+                        <td>{{transacao.categoria}}</td>
+                        <td>{{transacao.forma_pagamento}}</td>
+                        <td>{{transacao.tipo_transacao}}</td>
+                        <td>
+                            <a href="{% url 'alterar_transacao' transacao.id %}">Alterar</a>
+                            <a href="{% url 'excluir_transacao' transacao.id %}">Excluir</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
