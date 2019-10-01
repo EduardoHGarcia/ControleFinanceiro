@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <div class="row">
     <div class="col-md-8 col-sm-8 col-lg-8">
@@ -25,7 +26,7 @@
                     <td>{{conta.nome}}</td>
                     <td>R$ {{conta.valor_total}}</td>
                     <td>
-
+                        <a href="{% url 'alterar_conta' conta.id %}"><img src="{% static 'img/alter.svg' %}"></img></a>
                     </td>
                 </tr>
                 {% endfor %}
@@ -36,7 +37,7 @@
 <div class="row float-right">
     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" >
         <div class="btn-group" role="group">
-            <a href="CadastrarConta.html"><button type="button" class="btn btn-primary">Cadastrar Conta</button></a>
+            <a href="{% url 'cadastro_conta' %}"><button type="button" class="btn btn-primary">Cadastrar Conta</button></a>
         </div>
     </div>
 </div>

@@ -9,5 +9,7 @@ urlpatterns = [
     path('transacao/cadastro/', transacao.nova_transacao, name='cadastro_transacao'),
     path('transacao/alterar/<int:pk>', transacao.alterar_transacao, name='alterar_transacao'),
     path('transacao/excluir/<int:pk>', transacao.excluir_transacao, name='excluir_transacao'),
-    path('conta', conta.home, name='home_conta')
+    path('conta', conta.home, name='home_conta'),
+    path('conta/cadastro/', conta.nova_conta, name='cadastro_conta'),
+    path('conta/alterar/<int:pk>', conta.alterar_conta, name='alterar_conta')
 ]

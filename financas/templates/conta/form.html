@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card" style="margin-top:1%">
+    <div class="card-header">Cadastro de Conta</div>
+    <div class="card-body">
+        <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="button" class="btn btn-danger float-right col-lg-2 col-sm-2 col-md-2" onclick="location.href='{% url 'home_conta' %}'">Cancelar</button>
+        <button type="submit" class="btn btn-success float-right mr-4 col-lg-2 col-sm-2 col-md-2">Salvar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
