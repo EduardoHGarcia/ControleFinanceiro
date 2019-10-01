@@ -6,24 +6,27 @@
         <meta charset="UTF-8">
         <title>Sistema de Controle Financeiro</title>
         <link rel="stylesheet" href="{% static 'financas/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'financas/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'financas/css/w3.css' %}">
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-          <a class="navbar-brand" href="{% url 'home_transacao' %}">Controle Financeiro</a>
+          <a class="navbar-brand" href="{% url 'home' %}">Controle Financeiro</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a class="nav-link" href="{% url 'home_transacao' %}">Home<span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'home_transacao' %}">Tem nada aqui, só está aqui para ficar de exemplo</a>
-              </li>
             </ul>
           </div>
         </nav>
+        <div class="w3-sidebar w3-light-grey w3-card-4" style="width:10%" id="mySidebar">
+            <div class="w3-bar-block">
+                <a class="w3-bar-item w3-button" href="{% url 'home' %}">Home</a>
+                <a class="w3-bar-item w3-button" href="{% url 'home' %}">Contas</a>
+                <a class="w3-bar-item w3-button" href="{% url 'home_transacao' %}">Transações</a>
+            </div>
+        </div>
         <main class="container">
             {% block content %}
                 Aqui dentro vai entrar minhas views, corrigindo o meu problema de template

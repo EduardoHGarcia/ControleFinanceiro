@@ -7,7 +7,6 @@ import datetime
 from django.http import HttpResponse
 
 def home(request):
-    now = datetime.datetime.now()
     transacoes = Transacao.objects.all()\
         .filter(is_deletado = False)\
         .order_by('dt_transacao')

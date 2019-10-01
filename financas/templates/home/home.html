@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-4 col-lg-4 col-sm-4 border border-info" style="margin-top:1%">
+        <h3>Saldo</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">Conta</th>
+                <th scope="col">Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for conta in contas %}
+                {%if conta.valor_total < 0%}
+                <tr class="text-danger">
+                {%else%}
+                <tr class="text-success">
+                {% endif %}
+                    <td>{{conta.nome}}</td>
+                    <td>R$ {{conta.valor_total}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="btn-group" role="group" style="margin-bottom: 1%;">
+            <a href="Contas.html"><button type="button" class="btn btn-primary">Gerenciar Contas</button></a>
+        </div>
+    </div>
+
+    <div class="col-md-7 col-lg-7 col-sm-7 border border-info" style="margin-left:1%; margin-top:1%">
+        <h3>Transações Setembro</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+              {% for transacao in transacoes %}
+                {%if transacao.tipo_transacao.id == 1 %}
+                    <tr class="text-success">
+                {% else %}
+                    <tr class="text-danger">
+                {% endif %}
+                <tr class="text-danger">
+                    <td>{{transacao}}</td>
+                    <td>{{transacao.dt_transacao}}</td>
+                    <td>{{transacao.valor}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="btn-group" role="group" style="margin-bottom: 1%;">
+            <a href="{% url 'home_transacao' %}"><button type="button" class="btn btn-primary">Gerenciar Transações</button></a>
+        </div>
+    </div>
+</div>
+{% endblock %}
