@@ -24,9 +24,9 @@
             <tbody>
                 {% for transacao in transacoes %}
                     {% if transacao.tipo_transacao.id == 1 %}
-                        <tr class="bg-danger">
+                        <tr class="text-success">
                     {% else %}
-                        <tr class="bg-success">
+                        <tr class="text-danger">
                     {% endif %}
                         <td>{{transacao}}</td>
                         <td>{{transacao.dt_transacao}}</td>
@@ -35,8 +35,8 @@
                         <td>{{transacao.tipo_transacao}}</td>
                         <td>{{transacao.valor}}</td>
                         <td>
-                            <a href="{% url 'alterar_transacao' transacao.id %}">Alterar</a>
-                            <a href="{% url 'excluir_transacao' transacao.id %}">Excluir</a>
+                            <a href="{% url 'alterar_transacao' transacao.id %}"><img src="{% static 'img/alter.svg' %}"></img></a>
+                            <a href="{% url 'excluir_transacao' transacao.id %}"><img src="{% static 'img/delete.svg' %}"></img></a>
                         </td>
                     </tr>
                 {% endfor %}
