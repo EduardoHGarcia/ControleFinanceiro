@@ -6,8 +6,7 @@ from financas.models.forma_pagamento import Forma_Pagamento
 from financas.models.tipo_transacao import Tipo_Transacao
 from financas.models.conta import Conta
 from financas.models.transacao import Transacao
-#TODO : CORRIGIR ESSA VALIDAÇÃO, CORRIGIR A VISUALIZAÇÃO DA DATA NO ALTERAR.
-#TODO : Validar valor negativo
+
 def validacao_data_mes_ano_passado(value):
     today = date.today()
     if (value.month < today.month and value.year == today.year) or value.year < today.year:
