@@ -1,13 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="row">
+<div class="row" style="margin-top:1%">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <button type="button" class="btn btn-success float-right col-lg-2" onclick="location.href='{% url 'cadastro_transacao' %}'">Cadastrar Transação</button>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
 <!--Esse tipo de template do jungle é feito pelo JINJA, lembrar para ver como faz all-->
         <table class="table table-bordered">
             <thead>
@@ -33,7 +28,7 @@
                         <td>{{transacao.categoria}}</td>
                         <td>{{transacao.forma_pagamento}}</td>
                         <td>{{transacao.tipo_transacao}}</td>
-                        <td>{{transacao.valor}}</td>
+                        <td>R$ {{transacao.valor}}</td>
                         <td>
                             <a href="{% url 'alterar_transacao' transacao.id %}"><img src="{% static 'img/alter.svg' %}"></img></a>
                             <a href="{% url 'excluir_transacao' transacao.id %}"><img src="{% static 'img/delete.svg' %}"></img></a>
@@ -42,6 +37,13 @@
                 {% endfor %}
             </tbody>
         </table>
+    </div>
+</div>
+<div class="row float-right">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary" onclick="location.href='{% url 'cadastro_transacao' %}'">Cadastrar Transação</button>
+        </div>
     </div>
 </div>
 {% endblock %}

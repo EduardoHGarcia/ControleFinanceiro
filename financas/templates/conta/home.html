@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-8 col-sm-8 col-lg-8">
+        <h3>Contas</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-sm-12">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Conta</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for conta in contas %}
+                    {% if conta.valor_total >= 0 %}
+                        <tr class="text-success">
+                    {% else %}
+                        <tr class="text-danger">
+                    {% endif %}
+                    <td>{{conta.nome}}</td>
+                    <td>R$ {{conta.valor_total}}</td>
+                    <td>
+
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row float-right">
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" >
+        <div class="btn-group" role="group">
+            <a href="CadastrarConta.html"><button type="button" class="btn btn-primary">Cadastrar Conta</button></a>
+        </div>
+    </div>
+</div>
+{% endblock %}
