@@ -27,6 +27,7 @@
                     <td>R$ {{conta.valor_total}}</td>
                     <td>
                         <a href="{% url 'alterar_conta' conta.id %}"><img src="{% static 'img/alter.svg' %}"></img></a>
+                        <a href="{% url 'excluir_conta' conta.id %}"><img src="{% static 'img/delete.svg' %}"></img></a>
                     </td>
                 </tr>
                 {% endfor %}

@@ -27,3 +27,8 @@ def alterar_conta(request, pk):
         return redirect('home_conta')
 
     return render(request, 'conta/form.html', {'form': form})
+
+def excluir_conta(request, pk):
+    conta = Conta.objects.get(pk=pk)
+    conta.delete()
+    return redirect('home_conta')
