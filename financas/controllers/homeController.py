@@ -2,9 +2,7 @@ from django.shortcuts import render, redirect
 from financas.models.transacao import Transacao
 from financas.models.transacao import Conta
 from financas.forms.TransacaoForm import TransacaoForm
-import datetime
 
-# Create your views here.
 from django.http import HttpResponse
 
 def home(request):
